@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="'Редагування завдання ' + ${task.id}">Редагувати завдання</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    button {
+        width: 100px;
+        height: 25px;
+        font-size: 16px;
+    }
+</style>
+
+<body>
+<h2 th:text="'Редагування завдання ' + ${task.id}">Редагувати завдання</h2>
+
+<form th:object="${task}" th:action="@{/view-tasks/edit-task}" method="post">
+    <label>Назва:</label>
+    <input type="hidden" th:field="*{id}"/>
+    <input type="text" th:field="*{name}"/>
+    <br>
+    <label>Опис:</label>
+    <textarea th:field="*{description}"></textarea>
+    <br>
+    <label>Виконано:</label>
+    <input type="checkbox" th:field="*{completed}"/>
+    <br>
+    <button type="submit">Зберегти</button>
+</form>
+
+<br>
+<a th:href="@{/view-tasks}">Повернутися до списку</a>
+
+</body>
+</html>

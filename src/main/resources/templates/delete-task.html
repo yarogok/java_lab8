@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видалення завдання</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    button {
+        width: 100px;
+        height: 25px;
+        font-size: 16px;
+    }
+</style>
+
+<body>
+<h2>Видалення завдання</h2>
+
+<form th:action="@{/view-tasks/delete-task}" method="post">
+    <label for="taskId">Введіть ID:</label>
+    <input type="number" id="taskId" name="taskId" required min="1">
+    <br>
+    <button type="submit">Видалити</button>
+</form>
+<br>
+<a href="/view-tasks">Повернутися до списку</a>
+
+<div th:if="${error}" style="color: red;">
+    <p th:text="${error}"></p>
+</div>
+
+</body>
+</html>

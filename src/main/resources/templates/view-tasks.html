@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список завдань</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    button {
+        width: 115px;
+        height: 25px;
+        font-size: 14px;
+    }
+
+</style>
+
+<body>
+
+<h2>Список завдань</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Назва</th>
+        <th>Опис</th>
+        <th>Час створення</th>
+        <th>Статус</th>
+        <th>Зміна статусу</th>
+        <th>Редагування</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${taskList}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.name}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.createDateTime}"></td>
+        <td th:text="${task.completed} ? 'Завершено' : 'В процесі виконання'"></td>
+        <td>
+            <form th:action="@{'/view-tasks/' + ${task.id}}" th:method="post">
+                <button type="submit">Змінити статус</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{'/view-tasks/edit-task/' + ${task.id}}" th:method="get">
+                <button type="submit">Редагувати</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/view-tasks/add-task">Додати завдання</a>
+<br>
+<a href="/view-tasks/delete-task">Видалити завдання</a>
+<br>
+<a href="/logout">Вийти</a>
+
+<div th:if="${error}" style="color: red;">
+    <p th:text="${error}"></p>
+</div>
+
+</body>
+</html>
