@@ -1,11 +1,13 @@
 package spring.java_lab8.Model;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "t_role")
-public class Role {
+public class Role  implements GrantedAuthority {
     @Id
     private Long id;
 
@@ -36,5 +38,10 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String getAuthority() {
+        return getName();
     }
 }
