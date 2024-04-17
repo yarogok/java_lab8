@@ -1,10 +1,10 @@
-package spring.java_lab8.Controller;
+package spring.java_kurs_web.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import spring.java_lab8.Model.Task;
-import spring.java_lab8.Repository.TaskRepository;
+import spring.java_kurs_web.Model.Task;
+import spring.java_kurs_web.Repository.TaskRepository;
 
 import java.util.List;
 

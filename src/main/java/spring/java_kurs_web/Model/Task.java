@@ -1,4 +1,4 @@
-package spring.java_lab8.Model;
+package spring.java_kurs_web.Model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

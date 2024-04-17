@@ -1,4 +1,4 @@
-package spring.java_lab8.Model;
+package spring.java_kurs_web.Model;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -24,6 +24,11 @@ public class Role  implements GrantedAuthority {
         this.name = name;
     }
 
+    @Override
+    public String getAuthority() {
+        return getName();
+    }
+
     public Long getId() {
         return id;
     }
@@ -38,10 +43,5 @@ public class Role  implements GrantedAuthority {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String getAuthority() {
-        return getName();
     }
 }

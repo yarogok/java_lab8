@@ -1,10 +1,10 @@
-package spring.java_lab8;
+package spring.java_kurs_web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JavaLab8ApplicationTests {
+class JavaKusWebApplicationTests {
 
     @Test
     void contextLoads() {

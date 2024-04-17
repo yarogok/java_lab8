@@ -1,12 +1,12 @@
-package spring.java_lab8.Service;
+package spring.java_kurs_web.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import spring.java_lab8.Model.User;
-import spring.java_lab8.Repository.UserRepository;
+import spring.java_kurs_web.Model.User;
+import spring.java_kurs_web.Repository.UserRepository;
 
 @Service
 public class UserService implements UserDetailsService {

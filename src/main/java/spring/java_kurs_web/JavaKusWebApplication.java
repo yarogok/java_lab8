@@ -1,13 +1,13 @@
-package spring.java_lab8;
+package spring.java_kurs_web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaLab8Application {
+public class JavaKusWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JavaLab8Application.class, args);
+        SpringApplication.run(JavaKusWebApplication.class, args);
     }
 
 }

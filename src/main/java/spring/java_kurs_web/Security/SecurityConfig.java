@@ -1,4 +1,4 @@
-package spring.java_lab8.Security;
+package spring.java_kurs_web.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,18 +10,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import spring.java_lab8.Service.UserService;
+import spring.java_kurs_web.Service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -32,16 +27,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/view-tasks/edit-task/**", "/view-tasks/add-task", "/view-tasks/delete-task").hasRole("ADMIN")
-                .antMatchers("/view-tasks").hasAnyRole("ADMIN", "USER")
-                .anyRequest().authenticated()
-                .and()
+                    .antMatchers("/","/view-tasks/edit-task/**", "/view-tasks/add-task", "/view-tasks/delete-task").hasRole("ADMIN")
+                    .antMatchers("/view-tasks", "/user-list").hasAnyRole("ADMIN", "USER")
+                    .anyRequest().authenticated()
+                    .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/view-tasks").permitAll()
-                .and()
+                    .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/403");
+                    .and()
+                .exceptionHandling().accessDeniedPage("/403");
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }
